@@ -1,10 +1,8 @@
 require("dotenv").config();
 const keys = require("./keys.js");
 const inquirer = require('inquirer');
-const lodash = require('lodash');
 const fs = require("fs");
 const moment =  require('moment');
-
 var OmdbApi = require('omdb-api-pt');
 var omdb = keys.omdb;
 var time = moment().format('lll');
@@ -27,46 +25,74 @@ var guessWordList = ['The Shawshank Redemption', 'The Godfather', 'The Dark Knig
     'Once Upon a Time in the West', 'Psycho', 'The Intouchables', 'The Pianist', 'The Departed',
     'Terminator', 'Back to the Future', 'Whiplash', 'Gladiator', 'The Lion King', 'The Prestige', 'Memento',
 ];
-var title = guessWordList[Math.floor(Math.random()*guessWordList.length)];
+var title = guessWordList[Math.floor(Math.random()*guessWordList.length)]; //select the random movie from the list
 var newWord = new Word(title.toLowerCase());
 var guessedLetter = [];
 var guesses = 5;
 var points = 0;
-
-function takeHint() {
-
-    omdb.byId({
-            title: title,
-            imdb: 'tt0485947',
-            type: 'movie',
-            plot: 'full',
-            tomatoes: true,
-        }).then(function (res) {
-            inquirer.prompt([{
-                type: "list",
-                message: "Select option: ",
-                name: 'option',
-                choices: ["Year (-10 points)", "Actors (-20 points)", "Plot (-30 points)"]
-            }]).then(function (response) {
-                if (response.option === "Year (-10 points)") {
-                    console.log("Year: " + res.Year);
-                    points -= 10;
-                } else if (response.option === "Actors (-20 points)") {
-                    console.log("Actors: " + res.Actors);
-                    points -= 20;
-                } else {
-                    console.log("Plot: " + res.Plot);
-                    points -= 30;
-                }
-                console.log('Points: ' + points);
-                selectOptions();
-            })
-
-        })
-        .catch(err => console.error(err))
-};
-
 newWord.createSecretWord();
+
+// Player name input 
+function enterPlayer() {
+
+    inquirer.prompt([{
+        type: "input",
+        message: "Please, enter your name: ",
+        name: 'name'
+    }]).then(function (response) {
+        playerName = response.name
+        if (playerName) {
+            console.log('Player: ' + playerName)
+            startGame();
+        }
+    })
+}
+
+//Select options between "Start the Game" and "Players score log"
+function startGame() {
+    inquirer.prompt([{
+        type: "list",
+        message: "That is the Game 'Find a movie from TOP 50 IMDB RATING'\n  MENU:",
+        name: 'option',
+        choices: ["Start the Game", "Players score log"]
+    }]).then(function (response) {
+        if (response.option === "Start the Game") {
+            selectOptions();
+        } else {
+            fs.readFile("log.txt", "utf8", function(error, data) {
+                if (error) {
+                  return console.log(error);
+                }
+                console.log(data);
+              
+              });
+        }
+
+    })
+}
+
+//Select options between "Guess the letter" and "Get a hint"
+function selectOptions() {
+
+    console.log('Guesses left: ' + guesses);
+    console.log('\n==========================================================================');
+    console.log(newWord.hiddenWord.join(""));
+    console.log('==========================================================================\n');
+
+    inquirer.prompt([{
+        type: "list",
+        message: "Select option: ",
+        name: 'option',
+        choices: ["Guess the letter", "Get a hint"]
+    }]).then(function (response) {
+        if (response.option === "Guess the letter") {
+            guessTheLetter();
+        } else {
+            getHint();
+        }
+
+    })
+}
 
 function guessTheLetter() {
 
@@ -127,63 +153,39 @@ function findWord(letter) {
 
 }
 
-function startGame() {
-    inquirer.prompt([{
-        type: "list",
-        message: "That is the Game 'Find a movie of TOP 50 IMDB'\nMENU:",
-        name: 'option',
-        choices: ["Start the Game", "Players log"]
-    }]).then(function (response) {
-        if (response.option === "Start the Game") {
-            selectOptions();
-        } else {
-            fs.readFile("log.txt", "utf8", function(error, data) {
-                if (error) {
-                  return console.log(error);
+function getHint() {
+
+    omdb.byId({
+            title: title,
+            imdb: 'tt0485947',
+            type: 'movie',
+            plot: 'full',
+            tomatoes: true,
+        }).then(function (res) {
+            inquirer.prompt([{
+                type: "list",
+                message: "Select option: ",
+                name: 'option',
+                choices: ["1. Year (-10 points)", "2. Actors (-20 points)", "3. Plot (-30 points)", "4. Cancel"]
+            }]).then(function (response) {
+                if (response.option === "1. Year (-10 points)") {
+                    console.log("Year: " + res.Year);
+                    points -= 10;
+                } else if (response.option === "2. Actors (-20 points)") {
+                    console.log("Actors: " + res.Actors);
+                    points -= 20;
+                } else if (response.option === "3. Plot (-30 points)"){
+                    console.log("Plot: " + res.Plot);
+                    points -= 30;
+                } else {
+                    selectOptions();
                 }
-                console.log(data);
-              
-              });
-        }
+                console.log('Points: ' + points);
+                selectOptions();
+            })
 
-    })
-}
+        })
+        .catch(err => console.error(err))
+};
 
-
-function enterPlayer() {
-
-    inquirer.prompt([{
-        type: "input",
-        message: "Please, enter your name: ",
-        name: 'name'
-    }]).then(function (response) {
-        playerName = response.name
-        if (playerName) {
-            console.log('Player: ' + playerName)
-            startGame();
-        }
-    })
-}
-
-function selectOptions() {
-
-    console.log('Guesses left: ' + guesses);
-    console.log('\n==========================================================================');
-    console.log(newWord.hiddenWord.join(""));
-    console.log('==========================================================================\n');
-
-    inquirer.prompt([{
-        type: "list",
-        message: "Select option: ",
-        name: 'option',
-        choices: ["Guess the letter", "Take a hint"]
-    }]).then(function (response) {
-        if (response.option === "Guess the letter") {
-            guessTheLetter('\nFigure out the Movie title.\n');
-        } else {
-            takeHint();
-        }
-
-    })
-}
 enterPlayer();
