@@ -66,6 +66,7 @@ function startGame() {
                 console.log(data);
               
               });
+              startGame();
         }
 
     })
@@ -94,6 +95,7 @@ function selectOptions() {
     })
 }
 
+//Check for unsolved letters in the movie
 function guessTheLetter() {
 
     if (guesses >= 1) {
@@ -120,10 +122,11 @@ function findWord(letter) {
     if (letterChoices.indexOf(letter) !== -1 && guessedLetter.indexOf(letter) == -1 && letter != "") {
         if (newWord.hiddenWord.indexOf(" _ ") !== -1) {
             if (newWord.word.indexOf(letter) !== -1 || newWord.hiddenWord.indexOf(letter.toUpperCase()) !== -1) {
-                points += 10;
+                points += 15;
                 console.log('Points: ' + points);
             } else if (newWord.hiddenWord.indexOf(letter) == -1 && guessedLetter.indexOf(letter) == -1) {
                 guesses--;
+                points -= 5;
                 console.log('Points: ' + points);
             };
             guessedLetter.push(letter);
@@ -145,7 +148,7 @@ function findWord(letter) {
       
     } else if (letterChoices.indexOf(letter) !== -1) {
         console.log("Guessed letters: " + guessedLetter.toString() + ' \nLetter already guessed');
-
+        selectOptions();
     } else {
         console.log('That\'s not a letter. Please enter letter!');
         selectOptions();
@@ -153,6 +156,7 @@ function findWord(letter) {
 
 }
 
+//Make a movie request to OMDB API to get a hint.  Subtract points if you use a hint. 
 function getHint() {
 
     omdb.byId({
@@ -166,20 +170,18 @@ function getHint() {
                 type: "list",
                 message: "Select option: ",
                 name: 'option',
-                choices: ["1. Year (-10 points)", "2. Actors (-20 points)", "3. Plot (-30 points)", "4. Cancel"]
+                choices: ["1. Year (-10 points)", "2. Actors (-20 points)", "3. Plot (-30 points)", "4. Back"]
             }]).then(function (response) {
                 if (response.option === "1. Year (-10 points)") {
                     console.log("Year: " + res.Year);
-                    points -= 10;
+                    points -= 15;
                 } else if (response.option === "2. Actors (-20 points)") {
                     console.log("Actors: " + res.Actors);
-                    points -= 20;
+                    points -= 25;
                 } else if (response.option === "3. Plot (-30 points)"){
                     console.log("Plot: " + res.Plot);
-                    points -= 30;
-                } else {
-                    selectOptions();
-                }
+                    points -= 40;
+                } 
                 console.log('Points: ' + points);
                 selectOptions();
             })

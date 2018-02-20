@@ -2,3 +2,17 @@
 Points: 90 | Player: John | Date: Feb 19, 2018 12:32 PM
 Points: 70 | Player: Nick | Date: Feb 19, 2018 12:34 PM
 Points: 120 | Player: Paul | Date: Feb 19, 2018 12:36 PM
+Points: 50 | Player: Karl | Date: Feb 19, 2018 1:11 PM
+Points: 60 | Player: Frank | Date: Feb 19, 2018 1:42 PM
+Points: 70 | Player: Bill | Date: Feb 19, 2018 1:45 PM
+Points: 60 | Player: Tailor | Date: Feb 19, 2018 1:46 PM
+Points: 100 | Player: Luis | Date: Feb 19, 2018 1:49 PM
+Points: 70 | Player: Jane | Date: Feb 19, 2018 1:52 PM
+Points: 90 | Player: Dail | Date: Feb 19, 2018 2:11 PM
+Points: 130 | Player: William | Date: Feb 19, 2018 2:12 PM
+Points: 70 | Player: erin | Date: Feb 19, 2018 2:30 PM
+Points: 90 | Player: milena | Date: Feb 19, 2018 2:37 PM
+Points: 90 | Player: tora | Date: Feb 19, 2018 2:40 PM
+Points: 80 | Player: tora | Date: Feb 19, 2018 2:41 PM
+Points: 170 | Player: elen | Date: Feb 19, 2018 2:48 PM
+Points: 140 | Player: Liri | Date: Feb 19, 2018 2:57 PM
