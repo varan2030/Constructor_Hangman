@@ -56,57 +56,63 @@ Select "Start the Game" or "Players score log" in the MAIN MENU:
 
 ```
 
-* MUSIC log the following information about the song:
-
-
-	* artist(s)
-	* song name
-	* preview link of the song from spotify
-	* album that the song is a part of
-	* song name
-
-* if no song is provided then the program will output information for the song 'The Sign' by Ace of Base by default
-
-MOVIE category will ask:
+* "Guess the letter" allow to type a letter. If letter is right the Player gain 15 points or lose 5 point if letter is wrong.
 
 ```
-What is your favorite movie, USER_NAME?
+? Select option:  Guess the letter
+? Guess the letter t
+Points: 15
+Guessed letters: t
+Guesses left: 5
+
+==========================================================================
+T _  _     _  _  _  _  _ t _  _  _
+==========================================================================
 
 ```
 
-* MOVIES this would log the following information about the movie:
+
+* Player can select "Get a hint" to get information about movie, but points will be substracted from the score: -10 (Year of production); -20 (Actors); - 30(Plot). 
 
 
-	* Title
-	* Year
-	* IMDB Rating
-	* Country
-	* Language
-	* Plot
-	* Actors
-	* Rotten Tomatoes Rating
-	* Rotten Tomatoes URL
-
-* if no movie is provided then the program will output information for the movie 'Mr. Nobody' by default
 
 ```
-RANDOM COMPUTER SELECTION
+? Select option:  Get a hint
+? Select option:
+> 1. Year (-10 points)
+  2. Actors (-20 points)
+  3. Plot (-30 points)
+  4. Back
+
 ```
 
-* The program will take the text inside of random.txt and use it to call a function of the three categories(TWEETER, MUSIC, MOVIE)
-First command with the second part as it's parameter
-
-* Currently in random.txt, the following text is there:
+* Player has 5 guesses to find the movie title and win. 
 
 ```
-Tweeter,Music,I Want it That Way,Movie,The Green mile
+? Select option:  Guess the letter
+? Guess the letter f
+
+==========================================================================
+The Godfather
+==========================================================================
+
+Congratulation, Henry!!! You win!!! You've got 120 points!
+
 ```
 
-* This would call the Tweeter, Music, Movie function and pass in my last 20 tweets or "I Want it That Way" as the song and "The Green mile" as movie
+* If player win the game the player's name and score are logged to log.txt
 
-* This should work for any function and parameter you use.
+```
+? That is the Game 'Find a movie from TOP 50 IMDB RATING'
+  MENU: (Use arrow keys)
+> Start the Game
+  Players score log
+...
+Points: 170 | Player: elen | Date: Feb 19, 2018 2:48 PM
+Points: 140 | Player: Liri | Date: Feb 19, 2018 2:57 PM
+Points: 120 | Player: Henry | Date: Feb 19, 2018 7:26 PM
+```
 
-* All commands and output are logged in log.txt
 
 You can find all my projects in My Porfolio: https://varan2030.github.io/Bootstrap-Portfolio/
 

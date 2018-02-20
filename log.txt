@@ -16,3 +16,4 @@ Points: 90 | Player: tora | Date: Feb 19, 2018 2:40 PM
 Points: 80 | Player: tora | Date: Feb 19, 2018 2:41 PM
 Points: 170 | Player: elen | Date: Feb 19, 2018 2:48 PM
 Points: 140 | Player: Liri | Date: Feb 19, 2018 2:57 PM
+Points: 120 | Player: Henry | Date: Feb 19, 2018 7:26 PM
