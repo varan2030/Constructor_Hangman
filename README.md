@@ -1,7 +1,7 @@
 
 ## Introduction
 HANGMAN CONSTRUCTOR.  It is a node app Game to figure out a movie from TOP 50 IMDB RATING.
-The goal of the game to find a movie title and to get maximum points. Player has only 5 guesses to find the title. If player find a letter of the title, player gain 15 points. If guess letter will be wrong, 5 will be substracted from the score. Player can get a hint to find the title, but points will be substracted from the score: -10 (Year of production); -20 (Actors); - 30(Plot).
+The goal of the game to find a movie title and to get maximum points. Player has only 5 guesses to find the title. If the player finds a letter of the title, player gain 15 points. If guess letter will be wrong, 5 will be subtracted from the score. The player can get a hint to find the title, but points will be subtracted from the score: -10 (Year of production); -20 (Actors); - 30(Plot).
 ## Setup
 #### 0. Clone the repo
 
@@ -29,7 +29,7 @@ index.js
 
 ```
 
-Enter player name to run the Game:
+Enter a player name to run the Game:
 
 ```
 ? Please, enter your name:
@@ -56,7 +56,7 @@ Select "Start the Game" or "Players score log" in the MAIN MENU:
 
 ```
 
-* "Guess the letter" allow to type a letter. If letter is right the Player gain 15 points or lose 5 point if letter is wrong.
+* "Guess a letter" allow to type a letter. If the letter is right the Player gain 15 points or loses 5 points if the letter is wrong.
 
 ```
 ? Select option:  Guess the letter
@@ -72,7 +72,7 @@ T _  _     _  _  _  _  _ t _  _  _
 ```
 
 
-* Player can select "Get a hint" to get information about movie, but points will be substracted from the score: -10 (Year of production); -20 (Actors); - 30(Plot). 
+* Player can select "Get a hint" to get information about the movie, but points will be subtracted from the score: -10 (Year of production); -20 (Actors); - 30(Plot). 
 
 
 
@@ -114,7 +114,7 @@ Points: 120 | Player: Henry | Date: Feb 19, 2018 7:26 PM
 ```
 
 
-You can find all my projects in My Porfolio: https://varan2030.github.io/Bootstrap-Portfolio/
+You can find all my projects in My Portfolio: https://varan2030.github.io/Bootstrap-Portfolio/
 
 # Copyright
 (C) Almaz Dolubaev 2018. All Rights Reserved.
