@@ -1,7 +1,7 @@
 
 ## Introduction
 HANGMAN CONSTRUCTOR.  It is a node app Game to figure out a movie from TOP 50 IMDB RATING.
-The goal of the game to find a movie title and to get maximum points. Player has only 5 guesses to find the title. If the player finds a letter of the title, player gain 15 points. If guess letter will be wrong, 5 will be subtracted from the score. The player can get a hint to find the title, but points will be subtracted from the score: -10 (Year of production); -20 (Actors); - 30(Plot).
+The goal of the game to find a movie title and to get maximum points. Player has only 5 guesses to find the title. If the player finds a letter of the title, player gain 15 points. If guess letter will be wrong 5 points will be subtracted from the score. The player can get a hint to find the title, but points will be subtracted from the score: -10 (Year of production); -20 (Actors); - 30(Plot).
 ## Setup
 #### 0. Clone the repo
 
