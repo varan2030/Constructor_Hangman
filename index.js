@@ -38,8 +38,12 @@ function enterPlayer() {
     inquirer.prompt([{
         type: "input",
         message: "Please, enter your name: ",
-        name: 'name'
-    }]).then(function (response) {
+        name: 'name',
+        validate: function validateFirstName(name){
+            return name !== ''; 
+        }
+    }
+    ]).then(function (response) {
         playerName = response.name
         if (playerName) {
             console.log('Player: ' + playerName)
